@@ -3,6 +3,7 @@ import { User } from '../models'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
+//Method POST
 // Register new user
 export const registerNewUser = async (req: Request, res: Response) => {
   try {
@@ -38,6 +39,7 @@ export const registerNewUser = async (req: Request, res: Response) => {
   }
 }
 
+//Method POST
 // Login User
 export const loginUser = async (req: Request, res: Response) => {
   try {
@@ -63,6 +65,7 @@ export const loginUser = async (req: Request, res: Response) => {
   }
 }
 
+//Method GET
 // Log Out user
 export const logOut = async (req: Request, res: Response) => {
   try {

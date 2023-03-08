@@ -1,11 +1,15 @@
 import { Request, Response } from 'express'
 import { Worker } from '../models/workerModel'
 
+//Method GET
+//get all worker 
 export const getAllWoker = async (req: Request, res: Response) => {
   const worker = await Worker.find()
   res.status(200).json({ status: '200 ok', data: worker })
 }
 
+//Method POST
+// add new worker
 export const addNewWorker = async (req: Request, res: Response) => {
   const { name, lastname, middlename, phone_number, position } = req.body
 
