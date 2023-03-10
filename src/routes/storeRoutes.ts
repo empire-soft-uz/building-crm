@@ -2,10 +2,11 @@ import { Router } from 'express'
 import { Store } from '../controller'
 const storeRouter = Router()
 
-storeRouter.get('/all-products', Store.getAllProduct)
-storeRouter.post('/all-products', Store.addNewProduct)
+storeRouter.get('/products', Store.getAllProduct)
+storeRouter.post('/products', Store.addNewProduct)
 
-storeRouter.get('/all-history', Store.getAllHistory)
-storeRouter.post('/incr-decr/:id', Store.historyCalc)
+storeRouter.get('/histories', Store.getAllHistory)
+storeRouter.post('/incr-decr', Store.historyCalc)
 
 export { storeRouter }
+//REST API is not found

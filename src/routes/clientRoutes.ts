@@ -3,6 +3,8 @@ import { Clients } from '../controller'
 
 const clientRouter = Router()
 
-clientRouter.get('/all-client', Clients.getAllClients)
+clientRouter.get('/clients', Clients.getAllClients)
+clientRouter.get('/clients/:id', Clients.getOneClient)
+clientRouter.post('/clients', Clients.addNewClient)
 
 export { clientRouter }

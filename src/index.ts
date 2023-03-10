@@ -11,11 +11,11 @@ const PASSWORD = process.env.MONGOOSE_PASSWORD
     await mongoose.connect(
       `mongodb+srv://authUser:${PASSWORD}@cluster0.apnc6ah.mongodb.net/?retryWrites=true&w=majority`,
     )
-    console.log('Connect to db')
+    console.log('Connect to mongo db database ✅')
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`)
+      console.log(`Server running on port ${PORT}  💻`)
     })
   } catch ({ message }) {
-    console.log(`error => ${message}`)
+    console.log(`error => ${message} ❌`)
   }
 })()

@@ -31,8 +31,7 @@ export const getAllHistory = async (req: Request, res: Response) => {
 //Method POST
 // incer or decr product amount in the store
 export const historyCalc = async (req: Request, res: Response) => {
-  const { id } = req.params
-  const { bool, weight } = req.body
+  const { id, bool, weight } = req.body
   const data: any = await StoreProduct.findById({ _id: id })
 
   const newHistory = new History({
