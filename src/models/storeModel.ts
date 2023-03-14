@@ -16,7 +16,6 @@ const StoreProducts = new Schema<IStore>({
   },
 })
 
-
 const historyModel = new Schema({
   name: {
     type: String,
@@ -30,7 +29,10 @@ const historyModel = new Schema({
     type: Number,
     required: true,
   },
-  incOrdec: Boolean,
+  incOrdec: {
+    type: Boolean,
+    required: true,
+  },
 })
 
 export const History = model('History', historyModel)

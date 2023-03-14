@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { StoreProduct, History } from '../models/storeModel'
+import { StoreValidate } from '../validations/store.Validation'
 
 //Method GET
 // get all product in store
@@ -12,6 +13,10 @@ export const getAllProduct = async (req: Request, res: Response) => {
 // add new product in store
 export const addNewProduct = async (req: Request, res: Response) => {
   const { name, amount, desc } = req.body
+
+  const { status, msg } = StoreValidate.AddNewStore({ ...req.body })
+  if (!status) return res.send({ msg })
+
   const data = new StoreProduct({
     name,
     amount,
@@ -33,6 +38,9 @@ export const getAllHistory = async (req: Request, res: Response) => {
 export const historyCalc = async (req: Request, res: Response) => {
   const { id, bool, weight } = req.body
   const data: any = await StoreProduct.findById({ _id: id })
+
+  const { status, msg } = StoreValidate.AddNewHistory({ ...req.body })
+  if (!status) return res.send({ msg })
 
   const newHistory = new History({
     name: data?.name,

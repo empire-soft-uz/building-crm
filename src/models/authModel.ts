@@ -15,12 +15,12 @@ const Auth = new Schema<IAuth>({
     type: String,
     required: true,
   },
-  middlename: {
+  surname: {
     type: String,
     required: true,
   },
   password: {
-    type: Number,
+    type: String,
     required: true,
   },
 })

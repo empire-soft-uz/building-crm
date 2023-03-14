@@ -2,6 +2,16 @@ export interface IAuth {
   email: string
   lastname: string
   name: string
-  middlename: string
-  password: number
+  surname: string
+  password: string
+}
+
+export interface IValid {
+  status: boolean
+  msg: string | unknown
+}
+
+export interface ILoginValid {
+  email: string
+  password: string
 }

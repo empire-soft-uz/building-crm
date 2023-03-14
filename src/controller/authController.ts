@@ -1,12 +1,21 @@
 import { Request, Response } from 'express'
-import { User } from '../models'
+import { User } from '../models/authModel'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import validateAuth from '../validations/auth.Validation'
 
 //Method POST
 // Register new user
 export const registerNewUser = async (req: Request, res: Response) => {
   try {
+
+     //validate signup user
+    const { status, msg } = validateAuth.signup({
+      ...req.body,
+    })
+
+    if (status !== true) return res.json(msg)
+
     const { email, lastname, name, surname, password } = req.body
     const user = await User.findOne({ email })
     if (user) return res.status(400).json({ msg: 'The email alerady exists' })
@@ -44,7 +53,16 @@ export const registerNewUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body
+    
+    //validate login user
+    const { status, msg } = validateAuth.login({
+      ...req.body,
+    })
+    if (status !== true) return res.json(msg)
+
     const user: any = await User.findOne({ email })
+    console.log(user)
+
     if (!user) return res.status(400).json({ msg: 'User does not exists' })
 
     const isMatch = await bcrypt.compare(password, user.password)
