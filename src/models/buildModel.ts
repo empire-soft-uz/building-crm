@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-const builSchema = new Schema({
+const buildSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -22,6 +22,8 @@ const builSchema = new Schema({
     required: true,
   },
 })
+
+export const MainBuild = model('MainBuild', buildSchema)
 
 const eachBuildSchema = new Schema({
   floor: {
@@ -46,6 +48,8 @@ const eachBuildSchema = new Schema({
   },
 })
 
+export const EachBuild = model('EachBuild', eachBuildSchema)
+
 const eachFloorSchema = new Schema({
   number: {
     type: Number,
@@ -60,6 +64,8 @@ const eachFloorSchema = new Schema({
     required: true,
   },
 })
+
+export const EachFloor = model('EachFloor', eachFloorSchema)
 
 const addFloorSchema = new Schema({
   number: {
@@ -83,3 +89,5 @@ const addFloorSchema = new Schema({
     required: true,
   },
 })
+
+export const AddFloor = model('AddFloor', addFloorSchema)
